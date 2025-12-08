@@ -23,8 +23,3 @@ Identify limitations (supported formats, max file size, processing time)
 5)    Supported formats: initially DICOM, NRRD, NII.
       Max file size: limited to avoid long uploads (e.g., 200–400 MB).
       Processing time: depends on file size and browser performance; large scans may load slowe.
-
-
-
-
-
