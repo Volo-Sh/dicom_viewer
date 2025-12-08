@@ -6,8 +6,6 @@ The goal of this project is to create a simple, secure, and intuitive tool for v
 
 Project Status - In Development (Portfolio Project)
 
-Plan to do 12 steps 
-
 **Stage 1 - Define Project Scope**
 **Main goal:**
 Provide users with a fully free, simple, fast, and accessible way to upload and view CBCT (Cone Beam Computed Tomography) scans directly in a web browser, without installing any specialized software.
