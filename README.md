@@ -15,11 +15,17 @@ Define target users (e.g., dentists, patients, student radiologists)
 Describe the core use-case: upload + view CBCT scans in the browser
 Identify limitations (supported formats, max file size, processing time)
 
-**Results Stage 1 **
-1) The primary goal of the application is to provide users with a fully free, simple, fast, and accessible way to upload and view CBCT (Cone Beam Computed Tomography) scans directly in a web browser, without installing any specialized software.
-2) Dental and orthodontic professionals, Radiology and medical students, Patients, and Developers and researchers working with medical imaging.
-3) Core use-case:  **User logs in  >>>  ser uploads a CBCT file  >>>  System processes the scan   >>>  Scan appears in the dashboard  >>>  User opens it in the viewer   >>>    User scrolls through slices directly in the browser**
-4) Identify limitations
-5)    Supported formats: initially DICOM, NRRD, NII.
-      Max file size: limited to avoid long uploads (e.g., 200–400 MB).
-      Processing time: depends on file size and browser performance; large scans may load slowe.
+**Results Stage 1**
+**Main goal:**
+Provide users with a fully free, simple, fast, and accessible way to upload and view CBCT (Cone Beam Computed Tomography) scans directly in a web browser, without installing any specialized software.
+
+**Target users:**
+Dental and orthodontic professionals, radiology and medical students, patients, and developers or researchers working with medical imaging.
+
+**Core use-case:**
+User logs in → uploads a CBCT file → the system processes the scan → the scan appears in the dashboard → user opens it in the viewer → user scrolls through slices directly in the browser.
+
+**Limitations:**
+Supported formats: DICOM, NRRD, NII.
+Max file size: approximately 200–400 MB.
+Processing time: depends on scan size and browser performance; large files may load slowly.
