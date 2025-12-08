@@ -9,13 +9,6 @@ Project Status - In Development (Portfolio Project)
 Plan to do 12 steps 
 
 **Stage 1 - Define Project Scope**
-
-Clarify the main goal of the application
-Define target users (e.g., dentists, patients, student radiologists)
-Describe the core use-case: upload + view CBCT scans in the browser
-Identify limitations (supported formats, max file size, processing time)
-
-**Results Stage 1**
 **Main goal:**
 Provide users with a fully free, simple, fast, and accessible way to upload and view CBCT (Cone Beam Computed Tomography) scans directly in a web browser, without installing any specialized software.
 
@@ -29,3 +22,21 @@ User logs in → uploads a CBCT file → the system processes the scan → the s
 Supported formats: DICOM, NRRD, NII.
 Max file size: approximately 200–400 MB.
 Processing time: depends on scan size and browser performance; large files may load slowly.
+
+**Stage 2 Choose Tech Stack and Define Architecture**
+
+**Frontend stack:**
+React + Vite + Three.js for building the interface and rendering volumetric CBCT data in the browser.
+
+**Backend stack:**
+Node.js + Express for handling authentication, file uploads, file processing, and providing API endpoints.
+
+**Database:**
+MongoDB for storing user accounts, scan metadata, and references to uploaded files.
+
+**Storage approach:**
+Local file storage for the initial version of the project, with the option to move to cloud storage in the future.
+
+**Architecture:**
+Frontend communicates with the backend through a REST API.
+Data flow: the user uploads a CBCT scan → backend validates and stores the file → metadata is written to MongoDB → the frontend requests processed data → the scan is rendered in the viewer using React and Three.js.
