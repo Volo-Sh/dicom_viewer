@@ -68,3 +68,47 @@ Registration flow, login flow, upload flow, scan viewing flow and error handling
 
 **Design direction established:**
 Clean and minimal UI, simple color palette, consistent spacing and intuitive layout across all pages.
+
+**Stage 4 - Define Data Model and API Structure**
+
+**Core entities defined:**
+**User**: id, email, password hash, createdAt
+**CBCTScan**: id, ownerId, originalFileName, storagePath, uploadDate, status (ready, failed), format
+**ScanMetadata**: scanId, dimensions, numberOfSlices, voxelSize (optional later)
+
+**Database responsibilities defined:**
+User data and scan metadata are stored in MongoDB.
+Actual CBCT files are stored in filesystem (local storage first).
+Metadata links each file to its user and storage path.
+
+**API endpoints defined:**
+
+Authentication:
+POST /auth/register
+POST /auth/login
+
+Scan management:
+POST /scans/upload
+GET /scans/list
+DELETE /scans/:scanId
+GET /scans/:scanId/info
+
+Viewer data:
+GET /scans/:scanId/slices/:index (returns processed slice)
+GET /scans/:scanId/3d (3D data placeholder for future)
+
+**File validation and processing defined**:
+Backend validates file type (DICOM, NRRD, NII).
+If unsupported — scan is marked as failed.
+Metadata is extracted during upload (dimensions, slices).
+Processed data stored alongside original file.
+
+**Storage structure defined**:
+Files stored under /storage/userId/scanId/
+Original file name preserved for display.
+Processed slices stored as separate files (for future optimization).
+
+**Security rules defined**:
+Users can access only their own scans.
+File upload sanitized and validated.
+All endpoints require authentication except login and registration.
