@@ -1,0 +1,132 @@
+# **Stage 5 - Prepare Test Data (HIPAA-Aligned Document)**
+
+The purpose of Stage 5 is to prepare a controlled, safe, and private dataset of CBCT DICOM files for development and testing. Since the project operates in a healthcare-related context, this stage must follow privacy-first principles and avoid handling or exposing any Protected Health Information (PHI).
+
+Although anonymization is not required in your case, all test data must remain strictly local and must never be uploaded or shared publicly.
+
+---
+
+## **1. Collect a Local Set of DICOM CBCT Files**
+
+Prepare several DICOM datasets to cover different development scenarios:
+
+* **Small case (fast testing):**
+  A lightweight DICOM series suitable for quick uploads and UI testing.
+
+* **Medium case (performance testing):**
+  A larger DICOM series to evaluate loading time and viewer performance.
+
+* **Optional problematic case:**
+  A dataset with irregular structure or missing tags for error-handling tests.
+
+All datasets must remain on your local machine only.
+
+---
+
+## **2. Organize Files into a Local Test Directory**
+
+Create a directory structure for easier testing:
+
+```
+test-data/
+   case-small/
+   case-medium/
+   case-problem/
+```
+
+Each folder should contain the `.dcm` files belonging to a single CBCT series.
+
+This structure is for local development only and must not be tracked by Git.
+
+---
+
+## **3. Verify That Files Are Valid and Readable**
+
+Open each dataset in a DICOM viewer such as:
+
+* RadiAnt
+* Horos / OsiriX
+* 3D Slicer
+
+Confirm that:
+
+* The files are not corrupted
+* The slice order is correct (InstanceNumber or ImagePositionPatient)
+* The series contains usable volumetric data
+
+---
+
+## **4. Confirm the Expected DICOM Structure**
+
+CBCT volumes typically come in one of two forms:
+
+1. **Multi-file DICOM series**
+   The most common structure, where each `.dcm` file contains one slice.
+
+2. **Single-file DICOM volume**
+   Less common, but supported.
+
+For this project, multi-file series provide the best real-world test environment.
+
+---
+
+## **5. Enforce Local Storage and Privacy Requirements**
+
+To conform with privacy-by-design and HIPAA-aligned practices:
+
+* Do not upload DICOM files to GitHub or any cloud service
+* Do not share test datasets with third parties
+* Ensure `.gitignore` includes:
+
+```
+*.dcm
+test-data/
+storage/
+uploads/
+```
+
+This prevents accidental exposure of medical imaging data.
+
+---
+
+## **6. Select Primary Test Cases for Development**
+
+Choose which datasets will be used most frequently:
+
+* **Primary case:** small dataset for rapid workflow testing
+* **Performance case:** medium dataset for slice rendering tests
+* **Error case:** optional, for validating system resilience
+
+This selection helps streamline development and ensures consistency across stages.
+
+---
+
+## **HIPAA-Aligned Considerations**
+
+Even though anonymization is not required for your internal usage, the project follows these principles:
+
+* No PHI is uploaded, stored remotely, or transferred
+* All test files reside only on your local machine
+* All imaging data is excluded from version control
+* No real patient identifiers appear inside the application UI
+* Documentation avoids references to personally identifiable health data
+
+These measures ensure that development adheres to responsible handling of medical imaging data.
+
+---
+
+# **Results Stage 5 (Final)**
+
+**Test dataset prepared:**
+Local DICOM CBCT files have been organized into clearly defined categories (small, medium, problem cases) for consistent testing.
+
+**Privacy preserved:**
+All DICOM files remain on the local machine, are excluded from Git, and are handled in a privacy-first manner.
+
+**Usability confirmed:**
+All datasets have been verified in external DICOM viewers to ensure they are readable and suitable for development.
+
+**Development-ready structure:**
+A local directory structure has been created for use during upload, parsing, viewer development, and performance testing.
+
+---
